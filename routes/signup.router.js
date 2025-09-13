@@ -11,8 +11,9 @@ signuprouter.post("/",async (req,res)=>{
     const usercheck= await usermodel.findOne({email})
     if(usercheck){
         // return res.status(400).json({message:"User already exists"});
-        alert("User already exists please login");
-        res.redirect("/login");
+        // alert("User already exists please login");
+        res.redirect("/user/login");
+        
     }
     else{
         const newuser = await usermodel.create({username, email,password});

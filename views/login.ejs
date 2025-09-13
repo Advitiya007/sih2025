@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title><%= title || "Login" %></title>
+    <title>Login</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
@@ -14,7 +14,7 @@
         }
 
         .bg-gradient-custom {
-            background-image: linear-gradient(to bottom, #d0bfff, #9d94ff);
+            background-image: linear-gradient(to bottom,  #91a4c2,  #374151);
         }
     </style>
 </head>
@@ -24,8 +24,8 @@
     <div class="w-full max-w-md bg-gradient-custom rounded-3xl shadow-lg p-8 text-white">
 
         <div class="text-center mb-8">
-            <h1 class="text-3xl font-semibold"><%= heading || "Welcome," %></h1>
-            <p class="text-xl"><%= subheading || "Glad to see you!" %></p>
+            <h1 class="text-3xl font-semibold">Welcome</h1>
+            <p class="text-xl">Glad to see you!</p>
         </div>
 
         <form action="/user/login/" method="POST" class="space-y-6">
@@ -45,9 +45,7 @@
                 </button>
             </div>
 
-            <!-- <div class="text-right">
-                <a href="<%= forgotPasswordLink || '#' %>" class="text-sm text-white hover:underline">Forgot Password?</a>
-            </div> -->
+           
 
             <button type="submit"
                 class="w-full bg-white text-purple-600 font-bold py-3 rounded-xl shadow-md hover:bg-gray-100 transition duration-300">

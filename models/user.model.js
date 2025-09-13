@@ -21,7 +21,8 @@ const userSchema = new Schema({
   services: {
     type: [String],
     default: []
-  }
+  },
+  provides_service: { type: Boolean, default: false } 
 }, { timestamps: true });
 
 // Hash password before saving
@@ -33,7 +34,7 @@ userSchema.pre("save", async function(next) {
 });
 
 // Static method for checking password and returning token
-userSchema.statics.matchPasswordAndSendToken = async function(email, password) {
+userSchema.statics.matchpasswordandsendtoken = async function(email, password) {
   try {
     const user = await this.findOne({ email });
     if (!user) {

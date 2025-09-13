@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import path from "path";
-import { signuprouter } from './routes/signup.router';
+import { signuprouter } from './routes/signup.router.js';
 import { loginrouter } from './routes/login.router.js';
 
 const app= express();
@@ -11,12 +11,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use('/signup',signuprouter);
-app.use('/login',loginrouter);
+app.use('/user/signup',signuprouter);
+app.use('/user/login',loginrouter);
 
 
 app.set('view engine', 'ejs');
-app.set("views", path.join(__dirname, "views"));
+app.set("views", path.resolve("./views"));
 
 mongoose.connect('mongodb://127.0.0.1:27017/sih2025').then(()=>{
     console.log("Connected to MongoDB");

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dakshta - Professional Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="dash.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-paint-brush"></i>
+                    <a href="index.html" class="logo-text">Dakshta</a>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html">Home</a>
+                    <a href="#" class="active">Dashboard</a>
+                    <div class="user-menu">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80" alt="User" class="user-avatar">
+                        <span>Priya Sharma</span>
+                    </div>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuButton">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Dashboard Main Content -->
+    <main class="dashboard">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <div class="profile-header">
+                        <img src="https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRhbmNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Profile" class="profile-image">
+                        <div class="profile-info">
+                            <h1>Priya Sharma</h1>
+                            <p class="profession">Professional Dancer</p>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Ludhiana, IN</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Profile Management -->
+                <section class="dashboard-card">
+                    <h2>Profile Management</h2>
+                    <div class="profile-management">
+                        <div class="management-item">
+                            <i class="fas fa-user"></i>
+                            <div class="management-info">
+                                <h3>Personal Information</h3>
+                                <p>Update your personal details and contact information</p>
+                            </div>
+                            <button class="btn-outline">Edit</button>
+                        </div>
+                        <div class="management-item">
+                            <i class="fas fa-images"></i>
+                            <div class="management-info">
+                                <h3>Portfolio</h3>
+                                <p>Manage your portfolio images and videos</p>
+                            </div>
+                            <button class="btn-outline">Manage</button>
+                        </div>
+                        <div class="management-item">
+                            <i class="fas fa-star"></i>
+                            <div class="management-info">
+                                <h3>Skills & Services</h3>
+                                <p>Edit your skills, services, and pricing</p>
+                            </div>
+                            <button class="btn-outline">Edit</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Account Settings -->
+                <section class="dashboard-card">
+                    <h2>Account Settings</h2>
+                    <div class="settings-list">
+                        <div class="setting-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Change Password</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="setting-item">
+                            <i class="fas fa-bell"></i>
+                            <span>Notification Preferences</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                        <div class="setting-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Privacy Settings</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="copyright">
+                &copy; <span id="currentYear"></span> Dakshta. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="professional-dashboard.js"></script>
+</body>
+</html>

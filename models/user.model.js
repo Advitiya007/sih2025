@@ -22,7 +22,13 @@ const userSchema = new Schema({
     type: [String],
     default: []
   },
-  provides_service: { type: Boolean, default: false } 
+  provides_service: { type: Boolean, default: false } ,
+  profileImage: String,
+    profession: String,
+    location: String,
+    rating: Number,
+    price: String,
+    skills: [String],
 }, { timestamps: true });
 
 // Hash password before saving

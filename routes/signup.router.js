@@ -17,6 +17,8 @@ signuprouter.post("/",async (req,res)=>{
     }
     else{
         const newuser = await usermodel.create({username, email,password});
+        return res.redirect("/user/login");
+        
     }
     
 })

@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dakshta - Book Professionals</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="/dash.css" />
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fas fa-paint-brush"></i>
+                    <a href="/" class="logo-text">Dakshta</a>
+                </div>
+                <div class="nav-menu" id="navMenu">
+                    <a href="/dashboard">Home</a>
+                    <a href="/book-professionals" class="active">Book Professionals</a>
+                    <% if(locals.user){ %>
+                    <div class="user-menu">
+                        <img src="<%= user.profileImage %>" alt="User" class="user-avatar"/>
+                        <span><%= user.username %></span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <% } else { %>
+ <div class="user-menu">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="User" class="user-avatar">
+                        <span>John Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                        <% } %>
+                </div>
+                <div class="mobile-menu-btn" id="mobileMenuButton">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header> 
+
+    <!-- Dashboard Main Content -->
+    <main class="dashboard">
+        <div class="container">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <h1>Find the Perfect Professional</h1>
+                <p>Browse through our talented community and book the perfect professional for your needs.</p>
+                
+                <div class="search-filters">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search by skill, name, or location..." />
+                        <button class="btn-primary"><i class="fas fa-search"></i> Search</button>
+                    </div>
+                    
+                    <div class="filters">
+                        <div class="filter-group">
+                            <label>Category</label>
+                            <select>
+                                <option value="">All Categories</option>
+                                <option value="dance">Dance</option>
+                                <option value="music">Music</option>
+                                <option value="art">Art</option>
+                                <option value="design">Design</option>
+                                <option value="photography">Photography</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Location</label>
+                            <select>
+                                <option value="">Any Location</option>
+                                <option value="ludhiana">Ludhiana</option>
+                                <option value="delhi">Delhi</option>
+                                <option value="mumbai">Mumbai</option>
+                                <option value="bangalore">Bangalore</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label>Budget</label>
+                            <select>
+                                <option value="">Any Budget</option>
+                                <option value="low">₹1,000 - ₹5,000</option>
+                                <option value="medium">₹5,000 - ₹15,000</option>
+                                <option value="high">₹15,000+</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Professionals Section -->
+           <section class="professionals-section">
+    <h2>Available Professionals</h2>
+    <div class="professionals-grid">
+        <% if (locals.professionals && professionals.length > 0) { %>
+            <% professionals.forEach(function(professional) { %>
+                <div class="professional-card">
+                    <div class="card-image">
+                        <img src="<%= professional.profileImage %>" alt="<%= professional.profession %>" />
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <span><%= professional.rating || '4.8' %></span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3><%= professional.username %></h3>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> <%= professional.location %></p>
+                        <p class="profession"><%= professional.profession %></p>
+                        <p class="price">Starting from ₹<%= professional.price %>/event</p>
+                        <div class="skills">
+                            <% professional.services.forEach(function(service) { %>
+                                <span><%= service %></span>
+                            <% }) %>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-outline"><i class="far fa-heart"></i> Save</button>
+                            <a href="/user/<%= professional._id %>" class="btn-primary">Book Now</a>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        <% } %>
+    <!-- </div>
+                            <div class="professionals-grid"> -->
+                    <!-- Professional Card 1 -->
+                    <div class="professional-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1621072156002-e2fccdc0b176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGRhbmNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Dancer">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Priya Sharma</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Ludhiana, IN</p>
+                            <p class="profession">Professional Dancer</p>
+                            <p class="price">Starting from ₹3,000/event</p>
+                            <div class="skills">
+                                <span>Bollywood Dance</span>
+                                <span>Classical</span>
+                                <span>Choreography</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn-outline"><i class="far fa-heart"></i> Save</button>
+                                <button class="btn-primary">Book Now</button>
+                                <!--  user profile pr jana hai nawi id id search by gmail 
+                                   -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Card 2 -->
+                    <div class="professional-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1511735111819-9a3f7709049c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bXVzaWNpYW58ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80" alt="Musician">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Rohit Verma</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Ludhiana, IN</p>
+                            <p class="profession">Singer & Musician</p>
+                            <p class="price">Starting from ₹5,000/event</p>
+                            <div class="skills">
+                                <span>Vocals</span>
+                                <span>Guitar</span>
+                                <span>Hindi Songs</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn-outline"><i class="far fa-heart"></i> Save</button>
+                                <button class="btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Card 3 -->
+                    <div class="professional-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXJ0aXN0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="Artist">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Ananya Singh</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Ludhiana, IN</p>
+                            <p class="profession">Sketch Artist</p>
+                            <p class="price">Starting from ₹2,500/portrait</p>
+                            <div class="skills">
+                                <span>Portraits</span>
+                                <span>Landscapes</span>
+                                <span>Custom Art</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn-outline"><i class="far fa-heart"></i> Save</button>
+                                <button class="btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Card 4 -->
+                    <div class="professional-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1laGVuZGklMjBhcnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80" alt="Designer">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Karan Malhotra</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Ludhiana, IN</p>
+                            <p class="profession">Mehendi Designer</p>
+                            <p class="price">Starting from ₹4,000/event</p>
+                            <div class="skills">
+                                <span>Bridal Mehendi</span>
+                                <span>Arabic Designs</span>
+                                <span>Traditional</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn-outline"><i class="far fa-heart"></i> Save</button>
+                                <button class="btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Card 5 -->
+                    <div class="professional-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGhvdG9ncmFwaGVyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80" alt="Photographer">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.9</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Vikram Patel</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Delhi, IN</p>
+                            <p class="profession">Photographer</p>
+                            <p class="price">Starting from ₹8,000/event</p>
+                            <div class="skills">
+                                <span>Wedding Photography</span>
+                                <span>Portrait</span>
+                                <span>Event Coverage</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn-outline"><i class="far fa-heart"></i> Save</button>
+                                <button class="btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Professional Card 6 -->
+                    <div class="professional-card">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Zml0bmVzcyUyMHRyYWluZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80" alt="Fitness Trainer">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.6</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Neha Gupta</h3>
+                            <p class="location"><i class="fas fa-map-marker-alt"></i> Mumbai, IN</p>
+                            <p class="profession">Fitness Trainer</p>
+                            <p class="price">Starting from ₹1,500/session</p>
+                            <div class="skills">
+                                <span>Yoga</span>
+                                <span>Pilates</span>
+                                <span>Personal Training</span>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn-outline"><i class="far fa-heart"></i> Save</button>
+                                <button class="btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                           
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="logo-text">Dakshta</h4>
+                    <p>Connecting talent with opportunity.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; <span id="currentYear"></span> Dakshta. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

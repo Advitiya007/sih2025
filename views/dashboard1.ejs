@@ -1,0 +1,139 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Dakshta - Professional Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+    <!-- Header -->
+    <header class="bg-white shadow sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-paint-brush text-orange-600 text-2xl"></i>
+                <a href="/" class="text-orange-600 font-bold text-xl">Dakshta</a>
+            </div>
+            <nav class="hidden md:flex items-center gap-6">
+                <a href="/" class="hover:text-orange-600">Home</a>
+                <a href="" class="text-orange-600 font-semibold">Dashboard</a>
+                <div class="flex items-center gap-3 p-2 rounded-full hover:bg-gray-200 cursor-pointer">
+                  
+                </div>
+            </nav>
+            <div class="md:hidden">
+                <button id="mobileMenuButton" class="text-2xl focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="navMenu" class="hidden md:hidden flex flex-col gap-4 p-4 bg-white shadow-md">
+            <a href="/" class="hover:text-orange-600">Home</a>
+            <a href="#" class="text-orange-600 font-semibold">Dashboard</a>
+            <div class="flex items-center gap-3 p-2 rounded-full hover:bg-gray-200 cursor-pointer">
+                 <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="User" class="w-9 h-9 rounded-full object-cover"/>
+                <!-- <span>Priya Sharma</span> --> 
+                 <img src="<%= user.profileimage %>" alt="User" class="w-9 h-9 rounded-full object-cover"/>
+    <span><%= user.name %></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        
+        <!-- Welcome Section -->
+        <section class="bg-gradient-to-r from-blue-800 to-blue-700 text-white rounded-lg p-8 mb-8">
+            <div class="flex flex-col md:flex-row items-center gap-6">
+                <img src="<%= user.profileimage %>" alt="Profile" class="w-24 h-24 rounded-full border-4 border-white object-cover"/>
+<div>
+    <h1 class="text-2xl font-bold"><%= user.name %></h1>
+    <p class="text-orange-500 font-semibold"><%= user.profession %></p>
+    <p class="flex items-center gap-2"><i class="fas fa-map-marker-alt"></i> <%= user.location %></p>
+</div>
+
+            </div>
+        </section>
+
+        <!-- Dashboard Cards -->
+        <div class="space-y-8">
+
+            <!-- Profile Management -->
+            <section class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Profile Management</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 bg-gray-100 rounded hover:bg-gray-200">
+                        <i class="fas fa-user text-orange-600 text-xl w-10 text-center"></i>
+                        <div class="flex-1">
+                            <h3 class="font-semibold">Personal Information</h3>
+                            <p class="text-sm text-gray-600">Update your personal details and contact information</p>
+                        </div>
+                        <button a href="/dashboard/edit-profile" class="border border-orange-600 text-orange-600 px-4 py-2 rounded-full hover:bg-orange-50">Edit</button>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-gray-100 rounded hover:bg-gray-200">
+                        <i class="fas fa-images text-orange-600 text-xl w-10 text-center"></i>
+                        <div class="flex-1">
+                            <h3 class="font-semibold">Portfolio</h3>
+                            <p class="text-sm text-gray-600">Manage your portfolio images and videos</p>
+                        </div>
+                        <button class="border border-orange-600 text-orange-600 px-4 py-2 rounded-full hover:bg-orange-50">Manage</button>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-gray-100 rounded hover:bg-gray-200">
+                        <i class="fas fa-star text-orange-600 text-xl w-10 text-center"></i>
+                        <div class="flex-1">
+                            <h3 class="font-semibold">Skills & Services</h3>
+                            <p class="text-sm text-gray-600">Edit your skills, services, and pricing</p>
+                        </div>
+                        <button class="border border-orange-600 text-orange-600 px-4 py-2 rounded-full hover:bg-orange-50">Edit</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Account Settings -->
+            <section class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-bold mb-4">Account Settings</h2>
+                <div class="space-y-2">
+                    <div class="flex items-center gap-4 p-4 bg-gray-100 rounded hover:bg-gray-200 cursor-pointer">
+                        <i class="fas fa-lock text-orange-600 text-lg w-6 text-center"></i>
+                        <span class="flex-1">Change Password</span>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-gray-100 rounded hover:bg-gray-200 cursor-pointer">
+                        <i class="fas fa-bell text-orange-600 text-lg w-6 text-center"></i>
+                        <span class="flex-1">Notification Preferences</span>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                    <div class="flex items-center gap-4 p-4 bg-gray-100 rounded hover:bg-gray-200 cursor-pointer">
+                        <i class="fas fa-shield-alt text-orange-600 text-lg w-6 text-center"></i>
+                        <span class="flex-1">Privacy Settings</span>
+                        <i class="fas fa-chevron-right text-gray-400"></i>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 py-6 mt-12">
+        <div class="max-w-7xl mx-auto text-center text-sm">
+            &copy; <span id="currentYear"><%= new Date().getFullYear() %></span> Dakshta. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const navMenu = document.getElementById('navMenu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
